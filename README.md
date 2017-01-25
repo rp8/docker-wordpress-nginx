@@ -1,6 +1,6 @@
 # docker-wordpress-nginx
 
-Wordpress with PHP 7.0, PHP7.0-FPM & NGINX (1.10) on Ubuntu 16.04 LTS.
+Wordpress with PHP 7.0, PHP7.0-FPM & NGINX (1.11) on Debian Jessie
 
 Original work from @eugeneware/docker-wordpress-nginx.
 
@@ -30,18 +30,17 @@ mysql>Create database wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpre
 ```
 
 ## Wordpress
-nginx-sites.conf contains site configuration and should be copied to the container volume /etc/nginx/conf.d. If you host multiple sites, 
+The file nginx-sites.conf contains site configuration and should be copied to the container volume /etc/nginx/conf.d. If you host multiple sites, 
 each site needs its own folder in /var/www and its own database in the container mysqldb.
 
-For a single site configuration, you can config the nginx to point the root to /usr/share/nginx/wordpress.
+For single site configuration, you can config the nginx to point the root directly to the nginx default folder /usr/share/nginx/wordpress.
 
-For multi-site configuration, you can use the following commands to create another copy of wordpess in /var/www or you
-can just log into the wordpress container and do the following command
+For multi-site configuration, you can use the following commands to create another copy of wordpess in /var/www or you can just log into the wordpress container and run the following commands
 ```bash
 cp -R /usr/share/nginx/wordpress /var/www/; mv /var/www/wordpress /var/www/xxx; chown www-data:www-data /var/www/xxx
 ```
 
-For additional site, you can make copyies directly in /home/www in the host directly without logging into the wordpress container.
+For additional sites, you can make copyies directly in /home/www in the host directly without logging into the wordpress container.
 
 ```bash
 $ cp nginx-sites.conf /home/nginx/
