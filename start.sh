@@ -3,7 +3,7 @@ WPCONFIG=/usr/share/nginx/wordpress/wp-config.php
 if [ ! -f /usr/share/nginx/wordpress/wp-config.php ]; then
   if [ "$MYSQL_DB" != "wordpress" ]; then
     WPCONFIG=/var/www/$MYSQL_DB/wp-config.php
-    if [ ! -f /var/www/$MYSQL_DB ]; then
+    if [ ! -d /var/www/$MYSQL_DB ]; then
     	cp -R /usr/share/nginx/wordpress /var/www
     	chown -R www-data:www-data /var/www/wordpress
     	mv /var/www/wordpress /var/www/$MYSQL_DB
