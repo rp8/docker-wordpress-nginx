@@ -63,7 +63,7 @@ ADD ./start.sh /start.sh
 
 RUN chmod 755 /start.sh
 
-EXPOSE 80
+EXPOSE 80 443
 
 VOLUME /etc/nginx/conf.d
 VOLUME /var/www
